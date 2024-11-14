@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Полный математический тест</title>
+    <style>
+        body {
+            font-family: 'Verdana', sans-serif;
+            background-image: url(static/background2.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-family: Comic Sans MS, Comic Sans, cursive;
+            font-size: 2.5rem;
+            color: #09D72F;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-family: Comic Sans MS, Comic Sans, cursive;
+            color: #09D72F;
+            font-size: 1.5rem;
+            margin: 20px 0;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        input[type="text"] {
+            font-family: Comic Sans MS, Comic Sans, cursive;
+            margin-bottom: 15px;
+            padding: 10px;
+            font-size: 1.25rem;
+            border: 2px solid #09D72F;
+            border-radius: 5px;
+            width: 80%;3498db
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus {
+        font-family: Comic Sans MS, Comic Sans, cursive;
+            border-color: #09D72F;
+            outline: none;
+        }
+
+        button {
+        font-family: Comic Sans MS, Comic Sans, cursive;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            background-color: #09D72F;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #09D72F;
+        }
+
+        .correct {
+            color: #2ecc71;
+        }
+
+        .incorrect {
+            color: #e74c3c;
+        }
+
+        h3 {
+        font-family: Comic Sans MS, Comic Sans, cursive;
+            margin: 20px 0;
+            font-size: 1.3rem;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Математические задания</h1>
+        <h2>Вопрос: {{ num1 }} {{ operation }} {{ num2 }} = ?</h2>
+        <form method="post">
+            <input type="text" name="answer" placeholder="Введите ваш ответ" required>
+            <input type="hidden" name="correct_answer" value="{{ correct_answer }}">
+            <button type="submit">Проверить</button>
+        </form>
+        {% if result is not none %}
+            <h3 class="{{ '.correct' if result == 'Правильно' else '.incorrect' }}">{{ result }}</h3>
+        {% endif %}
+    </div>
+</body>
+</html>
